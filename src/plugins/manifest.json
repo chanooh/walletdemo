@@ -1,0 +1,30 @@
+{
+	"manifest_version": 2,
+	"name": "wallet",
+	"description": "基于Vue3的Chrome插件以实现类似以太坊钱包",
+	"version": "1.0.0",
+	"browser_action": {
+		"default_title": "plugin-base-vue3",
+		"default_icon": "assets/images/icon48.png",
+		"default_popup": "popup.html"
+	},
+	"permissions": [],
+	"background": {
+		"scripts": ["js/chunk-vendors.js", "js/background.js"]
+	},
+	"icons": {
+		"16": "assets/images/icon16.png",
+		"48": "assets/images/icon48.png",
+		"128": "assets/images/icon128.png"
+	},
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"css": ["css/content.css"],
+			"js": ["js/chunk-vendors.js", "js/content.js"],
+			"run_at": "document_idle"
+		}
+	],
+	"web_accessible_resources": ["js/inject.js"]
+}
